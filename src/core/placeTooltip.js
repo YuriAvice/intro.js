@@ -84,9 +84,10 @@ function _determineAutoPosition(
   // Take a clone of position precedence. These will be the available
   const possiblePositions = this._options.positionPrecedence.slice();
 
+  const screenPadding = this._options.screenPadding;
   const windowSize = getWindowSize();
-  const tooltipHeight = getOffset(tooltipLayer).height + 10;
-  const tooltipWidth = getOffset(tooltipLayer).width + 20;
+  const tooltipHeight = getOffset(tooltipLayer).height + 10 + screenPadding*2;
+  const tooltipWidth = getOffset(tooltipLayer).width + 10 + screenPadding*2;
   const targetElementRect = targetElement.getBoundingClientRect();
 
   // If we check all the possible areas, and there are no valid places for the tooltip, the element

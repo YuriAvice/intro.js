@@ -4,7 +4,6 @@ import exitIntro from "./core/exitIntro";
 import refresh from "./core/refresh";
 import introForElement from "./core/introForElement";
 import { getDontShowAgain, setDontShowAgain } from "./core/dontShowAgain";
-import { version } from "../package.json";
 import {
   populateHints,
   hideHint,
@@ -113,6 +112,8 @@ function IntroJs(obj) {
     buttonClass: "introjs-button",
     /* additional classes to put on progress bar */
     progressBarAdditionalClass: false,
+    /* screen padding to prevent autoaligned tips stick to screen edges */
+    screenPadding: 20,
   };
 }
 
@@ -141,14 +142,6 @@ const introJs = (targetElm) => {
 
   return instance;
 };
-
-/**
- * Current IntroJs version
- *
- * @property version
- * @type String
- */
-introJs.version = version;
 
 /**
  * key-val object helper for introJs instances
@@ -237,7 +230,7 @@ introJs.fn = IntroJs.prototype = {
       this._introBeforeChangeCallback = providedCallback;
     } else {
       throw new Error(
-        "Provided callback for onbeforechange was not a function"
+          "Provided callback for onbeforechange was not a function"
       );
     }
     return this;
