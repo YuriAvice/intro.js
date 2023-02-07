@@ -400,8 +400,10 @@ export default async function _showElement(targetElement) {
 
     nextTooltipButton.onclick = async () => {
       if (self._introItems.length - 1 !== self._currentStep) {
+        this._options.onClickNext();
         await nextStep.call(self);
       } else if (/introjs-donebutton/gi.test(nextTooltipButton.className)) {
+        this._options.onClickDone();
         if (typeof self._introCompleteCallback === "function") {
           await self._introCompleteCallback.call(
             self,
@@ -421,6 +423,7 @@ export default async function _showElement(targetElement) {
     prevTooltipButton = createElement("a");
 
     prevTooltipButton.onclick = async () => {
+      this._options.onClickPrev();
       if (self._currentStep !== 0) {
         await previousStep.call(self);
       }
@@ -438,6 +441,7 @@ export default async function _showElement(targetElement) {
     skipTooltipButton.innerHTML = this._options.skipLabel;
 
     skipTooltipButton.onclick = async () => {
+      this._options.onClickSkip();
       if (
         self._introItems.length - 1 === self._currentStep &&
         typeof self._introCompleteCallback === "function"

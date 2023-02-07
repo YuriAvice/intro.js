@@ -36,12 +36,20 @@ function IntroJs(obj) {
     isActive: true,
     /* Next button label in tooltip box */
     nextLabel: "Next",
+    /* Next button click event */
+    onClickNext: () => {},
     /* Previous button label in tooltip box */
     prevLabel: "Back",
+    /* Previous button click event */
+    onClickPrev: () => {},
     /* Skip button label in tooltip box */
     skipLabel: "×",
+    /* Skip button click event */
+    onClickSkip: () => {},
     /* Done button label in tooltip box */
     doneLabel: "Done",
+    /* Done button click event */
+    onClickDone: () => {},
     /* Hide previous button in the first step? Otherwise, it will be disabled button. */
     hidePrev: false,
     /* Hide next button in the last step? Otherwise, it will be disabled button (note: this will also hide the "Done" button) */
